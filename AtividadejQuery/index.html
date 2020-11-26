@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- Alan Zerbini, Isaac Gabriel / 4º Termo, ADS Fatec (Manhã) -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+        <title>Caracol Ambulante</title>
+        <style>
+            #caracol {
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="cabeçalho">
+            <h1>CARACOL AMBULANTE</h1>
+        </header>
+
+        <nav class="barra">
+            <p id="manual">Mova o caracol através dos botões abaixo ou usando as setas do seu teclado.</p>
+        </nav>
+
+        <div class="botões">
+            <div class="vertical">
+                <button type="button" id="subir">SUBIR</button>
+            </div>
+            <br/>
+            <div class="lados">
+                <button type="button" id="esquerda">ESQUERDA</button>
+                <button type="button" id="direita">DIREITA</button>
+            </div>
+            <br/>
+            <div class="vertical">
+                <button type="button" id="descer">DESCER</button>
+            </div>
+        </div>
+
+        <br/>
+        <div class="imagem">
+            <img src="caracol.png" id="caracol" width="140px">
+        </div>
+
+        <script src="jquery-3.5.1.min.js"></script>
+        <script>
+            /* BOTÕES NA TELA */
+            $("#subir").click(function () {
+                $("#caracol").animate(
+                    {
+                        "top":"-=20px"
+                    }, "slow"
+                )
+            })
+            $("#descer").click(function () {
+                $("#caracol").animate(
+                    {
+                        "top":"+=20px"
+                    }, "slow"
+                )
+            })
+            // Desafio 2
+            $("#direita").click(function () {
+                $("#caracol").css("transform", "rotateX(0deg)")
+                $("#caracol").animate(
+                    {
+                        "left":"+=20px"
+                    }, "slow"
+                )
+            })
+            $("#esquerda").click(function () {
+                $("#caracol").css("transform", "rotateY(180deg)")
+                $("#caracol").animate(
+                    {
+                        "left":"-=20px"
+                    }, "slow"
+                )
+            })
+            
+            // Desafio 2
+            // SETAS DO TECLADO
+            document.querySelector('body').addEventListener('keydown', function(event) {
+ 
+            var tecla = event.keyCode;
+
+            if (tecla == 37) {
+                // seta pra ESQUERDA
+                $("#caracol").css("transform", "rotateY(180deg)")
+                $("#caracol").animate(
+                    {
+                        "left":"-=20px"
+                    }, "slow"
+                )
+            } else if(tecla == 38) {
+                // seta pra CIMA
+                $("#caracol").animate(
+                    {
+                        "top":"-=20px"
+                    }, "slow"
+                )
+            } else if(tecla == 39) {
+                // seta pra DIREITA
+                // Desafio 2
+                $("#caracol").css("transform", "rotateX(0deg)")
+                $("#caracol").animate(
+                    {
+                        "left":"+=20px"
+                    }, "slow"
+                )
+            } else if(tecla == 40) 
+                // seta pra BAIXO
+                // Desafio 2
+                $("#caracol").animate(
+                    {
+                        "top":"+=20px"
+                    }, "slow"
+                )
+            }
+            );
+        </script>
+    </body>
+</html>
